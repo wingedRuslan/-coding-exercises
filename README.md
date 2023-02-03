@@ -2,6 +2,10 @@ This repository contains my implementation of useful data structures, algorithms
 
 Each item is marked with a difficulty level. 1 - easy 2 - medium 3 - hard
 
-If a file name starts with 'lc', it's a problem from leetcode.com
+If a file name starts with 'lc', it's a problem from leetcode.com - Super convenient because I am too lazy to write hundreds of test cases to validate the code :) 
 
-Written in python3. 
+Written in python3. Thanks Chip Huyen (@chiphuyen) for the inspiration.
+
+### Arrays and Hashing
+
+- [ ] Top K Frequent Elements (top_k_frequent_elements.py) - 2
