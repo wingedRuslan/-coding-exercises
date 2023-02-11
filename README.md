@@ -9,3 +9,9 @@ Written in python3. Thanks Chip Huyen (@chiphuyen) for the inspiration.
 ### Arrays and Hashing
 
 - [ ] Top K Frequent Elements (top_k_frequent_elements.py) - 2
+
+### Two-Pointer Technique
+
+- [ ] Valid Palindrome (lc-valid_palindrome.py) - 1
+- [ ] 3Sum (lc-3_sum.py) - 2
+- [ ] Container With Most Water (lc-container_with_most_water.py) - 2
