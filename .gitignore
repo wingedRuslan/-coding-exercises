@@ -1,0 +1,10 @@
+
+# ignore .idea/
+**/.idea/
+
+# Ignore pycache files
+**/__pycache__/
+
+# ignore .data/
+**/.data/
+
