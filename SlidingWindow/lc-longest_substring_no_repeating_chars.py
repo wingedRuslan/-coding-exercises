@@ -14,46 +14,40 @@ class SlidingWindowSolution:
         """
         Uses a slide window method to narrow down the search range.
         
-        My first implementation of the sliding window. 
+        Sliding window solution - next iteration. 
         I maintain set (unique chars in currest sliding window substring) and sliding window to track chars in substring.
+        Sliding window is specified via 2 pointers: start (points to substring start) and curr pointer while iterating through string.
+        	--> Makes code cleaner and easy-to-follow
         
         Time - O(n)
         Space -O(n)
         """
         
         MaxLenSubstring = 0
-		
+
+        # Keep unique chars of the sliding window
         charSet = set()
-        slide_window_substring = ''
+        
+        # Points to the start of the substring
+        start_substring_pointer = 0
 
         for i in range(len(s)):
+
+            if s[i] in charSet:    # Repetition found - Update window and set
+                
+                # Remove chars before the repetition - remember that the substring contains continuous elements
+                while s[start_substring_pointer] != s[i]:
+                    charSet.remove(s[start_substring_pointer])
+                    start_substring_pointer += 1
+                
+                # Remove the repetition element itself
+                charSet.remove(s[i])
+                start_substring_pointer += 1
             
-            # Repetition found
-            if s[i] in charSet:
-                
-                # What is the current len of substring
-                MaxLenSubstring = max(MaxLenSubstring, len(charSet))
-				
-                # Substring is continuous - so I need to know how many elements from left I need to remove
-                # j = 0, s[i] repetition found for the 1st element in window
-                # j > 0, s[i] - remove all elements to the left of repetition bc the substring must be continuous
-                j = 0
-                while slide_window_substring[j] != s[i]:
-                    j += 1
-                
-                # Remove from hashset
-                for c in slide_window_substring[ : j + 1]:
-                    charSet.remove(c)
-
-                # Remove from sliding window the left part before repetition seen
-                slide_window_substring = slide_window_substring[j + 1 : ]
-
-
             charSet.add(s[i])
-            slide_window_substring += s[i]
-        
-        # Edge case - " "
-        MaxLenSubstring = max(MaxLenSubstring, len(charSet))
+
+            MaxLenSubstring = max(MaxLenSubstring, len(charSet))
+
 
         return MaxLenSubstring
 
