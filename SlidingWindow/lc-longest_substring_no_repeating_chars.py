@@ -12,17 +12,16 @@ Explanation: The answer is "abc", with the length of 3.
 class SlidingWindowSolution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         """
-        Uses a slide window method to narrow down the search range.
-        
-        Sliding window solution - next iteration. 
-        I maintain set (unique chars in currest sliding window substring) and sliding window to track chars in substring.
-        Sliding window is specified via 2 pointers: start (points to substring start) and curr pointer while iterating through string.
-        	--> Makes code cleaner and easy-to-follow
-        
+        This is the 3rd iteration over my Sliding Window Solution.
+
+        Given a substring with a fixed end index in the string
+            maintain a set to record each unique character in the current substring 
+            if any character occurs more than once (repetition), drop the leftmost characters until there are no duplicate characters.
+
         Time - O(n)
-        Space -O(n)
+        Space - O(n)
         """
-        
+
         MaxLenSubstring = 0
 
         # Keep unique chars of the sliding window
@@ -32,23 +31,18 @@ class SlidingWindowSolution:
         start_substring_pointer = 0
 
         for i in range(len(s)):
-
-            if s[i] in charSet:    # Repetition found - Update window and set
-                
-                # Remove chars before the repetition - remember that the substring contains continuous elements
-                while s[start_substring_pointer] != s[i]:
-                    charSet.remove(s[start_substring_pointer])
-                    start_substring_pointer += 1
-                
-                # Remove the repetition element itself
-                charSet.remove(s[i])
+            
+            # Repetition found - Update window and set
+            while s[i] in charSet:
+                charSet.remove(s[start_substring_pointer])
                 start_substring_pointer += 1
             
+            # Increase the "end" of current substring by one - consider next element
             charSet.add(s[i])
 
-            MaxLenSubstring = max(MaxLenSubstring, len(charSet))
-
-
+            # Keep track of the longest substring without repeating characters
+            MaxLenSubstring = max(MaxLenSubstring, i - start_substring_pointer + 1)
+        
         return MaxLenSubstring
 
 
