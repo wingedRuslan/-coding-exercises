@@ -31,8 +31,8 @@ class BruteForceSolution:
         
         def _is_valid_window(countChars, size, k):
             # Rule to check whether the current windows is valid or not
-            most_common_occurs = max(countChars.values())
-            return True if (size - most_common_occurs <= k) else False
+            maxFreq = max(countChars.values())
+            return True if (size - maxFreq <= k) else False
         
         res = 0
 		
@@ -43,7 +43,7 @@ class BruteForceSolution:
                 countCharsWindow[s[j]] = 1 + countCharsWindow.get(s[j], 0)
 				
                 if not _is_valid_window(countCharsWindow, j - i + 1, k):
-                    j -= 1
+                    j -= 1    # return to the previous valid window
                     break
             
             res = max(res, j - i + 1)
