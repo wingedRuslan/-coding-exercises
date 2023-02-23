@@ -11,6 +11,57 @@ Explanation: Replace the two 'A's with two 'B's or vice versa.
 """
 
 
+class SlidingWindowSolution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        """
+        Sliding Window solution (two pointers) as an upgrade over BruteForceSolution
+        
+        How to check is_valid_window?
+			- window_length - most_common_el_occurrences <= k
+
+        Init l, r at the 1st position
+        if current windows s[l:r] is valid 
+            --> move r to the right
+        if current windows s[l:r] is NOT valid 
+            --> move l to the right until valid window is found
+            --> remove elements from the hashmap as we shrink the window (l += 1, r-const)
+
+        Note: _is_valid_window() is technically constant in time complexity because contains at most 26 uppercase English letters
+
+        Time - O(26*n)
+        Space - O(n)
+        """
+        
+        # def _is_valid_window(countChars, size, k):
+        #     # Rule to check whether the current windows is valid or not
+        #     maxFreq = max(countChars.values())
+        #     return True if (size - maxFreq <= k) else False
+        
+        res = 0
+
+        # Keep the char counts of the current window
+        count = {}
+
+        l = 0
+        r = 0
+
+        while r < len(s):
+            
+            count[s[r]] = 1 + count.get(s[r], 0)
+
+            # Shrink the window (move left pointer) until valid window found
+            while (r - l + 1) - max(count.values()) > k:
+                count[s[l]] -= 1
+                l += 1
+            
+            res = max(res, r - l + 1)
+
+            # Extend the window
+            r += 1
+
+        return res
+
+
 class BruteForceSolution:
     def characterReplacement(self, s: str, k: int) -> int:
         """
