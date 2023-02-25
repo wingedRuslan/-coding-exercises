@@ -8,3 +8,5 @@
 # ignore .data/
 **/.data/
 
+# ignore temp py file
+**/tmp.py
