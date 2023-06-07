@@ -15,3 +15,8 @@ Written in python3. Thanks Chip Huyen (@chiphuyen) for the inspiration.
 - [ ] Valid Palindrome (lc-valid_palindrome.py) - 1
 - [ ] 3Sum (lc-3_sum.py) - 2
 - [ ] Container With Most Water (lc-container_with_most_water.py) - 2
+
+
+## Roadmap for preparation
+![RoadMap](https://github.com/wingedRuslan/coding-exercises/assets/14000852/52973986-fb62-4047-81a9-22c4855dd57a)
+Taken from [neetcode](https://neetcode.io/roadmap).
