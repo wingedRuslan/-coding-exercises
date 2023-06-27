@@ -1,4 +1,7 @@
 
+# ignore .vs/
+**/.vs/
+
 # ignore .idea/
 **/.idea/
 
